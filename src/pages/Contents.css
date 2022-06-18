@@ -1,0 +1,10 @@
+article {
+  flex-basis: 50%;
+  height: 100vh;
+  border: solid 1px;
+  margin-left: 3px;
+}
+
+h1{
+  text-align: center;
+}

@@ -1,0 +1,94 @@
+h2 {
+  text-align: center;
+ }
+ 
+ .list_container {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   margin-left: 3px;
+ }
+ 
+ .list_el {
+   display: flex;
+   justify-content: space-around;
+   border: solid 1px;
+ }
+ 
+ .list {
+   list-style: none;
+   display: flex;
+   height: 20px;
+   overflow: inherit;
+ }
+ 
+ .list > div {
+   flex-basis: 32%;
+   border: solid 1px;
+ }
+
+ .list > button {
+   flex-basis: 4%;
+ }
+ 
+ .list_num {
+   text-align: center;
+ }
+ 
+ .list_title:hover {
+   cursor: pointer;
+ }
+ 
+ .list_createAt {
+   text-align: center;
+ }
+
+
+.input_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 6.25em;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 10px;
+  resize: none; 
+}
+
+.title  {
+  width: 50%;
+  margin-top: 5px;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 5px;
+}
+
+.username {
+  width: 20%;
+  margin-top: 5px;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 5px;
+}
+
+.submitBtn {
+  width: 20%;
+  margin-top: 5px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(112, 112, 250);
+  color: white;
+}
+
+section {
+  width: 100%;
+  display: flex;
+}
+
+.table {
+  width: 50%;
+}
+
