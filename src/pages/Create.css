@@ -1,0 +1,30 @@
+textarea {
+  width: 100%;
+  height: 6.25em;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 10px;
+  resize: none; 
+}
+
+.title  {
+  width: 50%;
+  margin-top: 5px;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 5px;
+}
+
+.username {
+  width: 20%;
+  margin-top: 5px;
+  border: solid 1px rgb(112, 112, 250);
+  border-radius: 5px;
+}
+
+.submitBtn {
+  width: 20%;
+  margin-top: 5px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(112, 112, 250);
+  color: white;
+}

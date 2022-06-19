@@ -23,12 +23,8 @@ h2 {
  }
  
  .list > div {
-   flex-basis: 32%;
+   flex-basis: 33.3333%;
    border: solid 1px;
- }
-
- .list > button {
-   flex-basis: 4%;
  }
  
  .list_num {
@@ -91,4 +87,5 @@ section {
 .table {
   width: 50%;
 }
+
 

@@ -2,22 +2,55 @@ import "./Read.css"
 import { useState } from "react";
 import dummy from "../Data/dummyData";
 import Contents from "./Contents";
+import Create from "./Create";
 
 
 function Read(){
 
   const [mode, setMode] = useState(false);
   const [data, setData] = useState(dummy);
-  const [title, setTitle] = useState();
+  const [id, setId] = useState(null);
+  const [username, setUsername] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
 
   const handleCreateMode = (event) => {
     setMode(!mode)
   }
 
   const handleFilter = (event) => {
-    setTitle(event.target.textContent)
-    console.log(event.target.textContent)
+    setId(event.target.id)
   }
+
+  const handleUsername = (event) => {
+    setUsername(event.target.value)
+  }
+
+  const handleTitle = (event) => {
+    setTitle(event.target.value)
+  }
+
+  const handleContent =(event) => {
+    setContent(event.target.value)
+  }
+
+  const handleClickData = (event) => {
+    event.preventDefault()
+    onCreate(title, username, content)
+  }
+
+  const onCreate = (title, content, username) => {
+    const newlist = {
+      id: data.length + 1,
+      username: username,
+      title: title,
+      content: content,
+      createdAt: new Date(),
+    }
+    setData([newlist, ...data])
+  }
+
 
   return (
    <div className="list_container">
@@ -37,63 +70,33 @@ function Read(){
         </li>
           {data.map((list)=>{
             return(
-              <li className="list" id={list.id} key={list.id} >
+              <li className="list" key={list.id}>
                 <div className="list_num">{list.id}</div>
-                <div className="list_title" value={list.title}  onClick={handleFilter}>{list.title}</div>
+                <div className="list_title" value={list.title} id={list.id} onClick={handleFilter}>{list.title}</div>
                 <div className="list_createAt">{new Date(list.createdAt).toLocaleDateString('ko-kr')}</div>
-                <button className="delete"></button>
               </li>
             )
           })}
       </ul>
       <button onClick={handleCreateMode}>글쓰기</button>
-      {mode? <Create onCreate = {(title, content, username) =>{
-        const newlist = {
-          id: data.length + 1,
-          username: username,
-          title: title,
-          content: content,
-          createdAt: new Date(),
-        }
-        setData([newlist, ...data])
-      }} /> : null}
+      {mode? <Create handleUsername={handleUsername} handleTitle={handleTitle} handleContent={handleContent} handleClickData={handleClickData}/>
+      : null}
      </div>
-      <Contents props={data} title={title} />
+      <Contents props={data} dataid = {id} />
+      <button className="delet" value="delete" onClick={()=>{
+        const newData = [];
+        for(let i = 0; i < data.length; i++){
+          if(`${data[i].id}` !== id){
+            newData.push(data[i]);
+          }
+        }
+        setData(newData);
+      }}
+      >삭제</button>
     </section>
     </div>
 
 )}
 
-
-function Create(props) {
-  const [username, setUsername] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const handleUsername = (event) => {
-    setUsername(event.target.value)
-  }
-
-  const handleTitle = (event) => {
-    setTitle(event.target.value)
-  }
-
-  const handleContent =(event) => {
-    setContent(event.target.value)
-  }
-
-  const handleClickData = (event) => {
-    event.preventDefault();
-    props.onCreate(title, username, content);
-  }
-
-
-  return <form className="input_form" onSubmit={handleClickData}>
-          <textarea type="text" placeholder="내용을 입력하세요" onChange={handleContent}></textarea>
-          <input className="title" type="text" placeholder="제목" onChange={handleTitle}></input>
-          <input className="username" type="text" placeholder="당신의 이름은?" onChange={handleUsername}></input>
-          <input className="submitBtn" type="submit" ></input>
-  </form>
-}
 
 export default Read;
